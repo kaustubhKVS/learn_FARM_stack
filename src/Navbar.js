@@ -19,3 +19,5 @@ const Navbar = () => {
 }
    
 export default Navbar;
+
+// color hota hai vo, colour nahi
