@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BlogList from "./BlogList";
 
 const Home = () => {
     const [blogs, setBlogs] = useState([
@@ -12,16 +13,10 @@ const Home = () => {
     return ( 
 
         <div className="home">
-            <h1>WELCOME Home</h1>
-                {blogs.map((blog) => (
-                    <div className="blog-preview" key={blog.id}>
-                        <h2>{ blog.title }</h2>
-                        <p>Written by {blog.author}</p>
-                    </div>
-            ))}
+            <BlogList blogs={blogs} title="All Blogs"/>
         </div>
 
-     ); 
+     );
 }
  
 export default Home; 
@@ -35,3 +30,7 @@ export default Home;
 
 // Reactive value is something which can change or re-render using state hooks
 // we use set states for this purpose, we decide a variable name and a mehtod which can be called to set the variable to a different value.
+
+// Components can talk to each other, home can pass blogs to the blog.js 
+// Props is the data/properties passed between components.
+// the props for bloglist is blogs,title which are passed to BLogList component as props.
