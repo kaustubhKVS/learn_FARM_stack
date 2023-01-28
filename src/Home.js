@@ -2,21 +2,29 @@ import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
-    
+
     const [blogs, setBlogs] = useState(null);
     const [isPending, setPending] = useState(true);
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         console.log('use effect ran');
         fetch('http://localhost:8000/blogs')
-        .then(response => {
-            return response.json();
-        })
-        .then(data => {
-            // console.log(data);
-            setBlogs(data);
-            setPending(false);
-        })
+            .then(response => {
+                if(!response.ok)
+                {
+                    throw Error('COULD NOT FETCH DATA');
+                }
+                return response.json();
+            })
+            .then(data => {
+                setBlogs(data);
+                setPending(false);
+            })
+            .catch( err => {
+                setError(err.message);
+                setPending(false);
+            })
     }, 
     [] //dependancy array
     );
@@ -24,6 +32,7 @@ const Home = () => {
     return ( 
 
         <div className="home">
+            { error && <div> { error }</div>}
             { isPending && <div> LOADING CONTENT </div>}
             {blogs && <BlogList blogs={blogs} title="All Blogs are listed here."/>}
         </div>
