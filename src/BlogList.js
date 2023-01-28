@@ -20,5 +20,5 @@ const Blogs = ({blogs , title}) => {
                 
      );
 }
- 
+
 export default Blogs;
