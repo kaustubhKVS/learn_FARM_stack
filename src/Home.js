@@ -6,19 +6,21 @@ const Home = () => {
         
             {title:'Tarun is a hoe', body:'Tarun has 69 chicks in reserve', author:'JhonAKAJash', id:1 },
             {title:'Tarun is a hero', body:'Tarun saved me in reserve', author:'SastiRandiSahil', id:2 },
-            {title:'New King of Amaravti', body:'Sindhi by Blood, Amaravti by heart', author:'TarunAKAlalla', id:3 }
-        
+            {title:'New King of Amaravti', body:'Sindhi by Blood, Amaravti by heart', author:'TarunAKAlalla', id:3 },
+            {title:'Tired', body:'Sindhi by Blood, Amaravti by heart', author:'mario', id:4 }
+         
     ]);
 
     return ( 
 
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs"/>
+            <BlogList blogs={blogs} title="All Blogs are listed here."/>
+            <BlogList blogs={blogs.filter((blogs) => blogs.author === 'mario')} title="Mario's Blogs"></BlogList>
         </div>
 
      );
 }
- 
+
 export default Home; 
 
 // handleClickAgain('mario')
