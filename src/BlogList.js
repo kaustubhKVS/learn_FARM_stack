@@ -5,7 +5,7 @@ const Blogs = ({blogs , title, handleDelete}) => {
 
     // const blogs = props.blogs;
     // const title = props.title;
-    console.log(blogs);
+    // console.log(blogs);
 
     return ( 
         <div className="blog-list">

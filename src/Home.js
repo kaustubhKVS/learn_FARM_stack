@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
@@ -16,11 +16,26 @@ const Home = () => {
         setBlogs(newBlog);
     }
     
+    const [name, setName] = useState('mario');
+
+    useEffect(() => {
+        console.log('use effect ran');
+        console.log(blogs);
+    }, 
+    //[] // Empty dependancy array will allow useEffect to render only for the first render i.e. when the pade loads for first time
+    [name] // This will cause use effect to work only when state of 'name' changes and not at every render.
+    );
+
+
+
     return ( 
 
         <div className="home">
             <BlogList blogs={blogs} title="All Blogs are listed here." handleDelete={handleDelete} />
-            <BlogList blogs={blogs.filter((blogs) => blogs.author === 'mario')} title="Mario's Blogs"></BlogList>
+            <p>{ name }</p>
+            <button onClick={() => setName('luigi')}> Update Name</button>
+
+            {/*<BlogList blogs={blogs.filter((blogs) => blogs.author === 'mario')} title="Mario's Blogs"></BlogList> */}
         </div>
 
      );
@@ -28,6 +43,8 @@ const Home = () => {
 
 export default Home; 
 
+// useEffect can be use to load things at every re-render. Can be used for fetching data, authentication etc things which had to be used at every render.
+// using useEffect and useState toghether if not done carefully can result into an infinite loop.
 // handleDelete is defiend where the data resides, and we have passed handleDelete as a function to a prop
 // handleClickAgain('mario')
 // We do not INVOKE by function handleClick(), we invoke by reference handleClick
