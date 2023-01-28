@@ -23,7 +23,7 @@ const Home = () => {
         console.log(blogs);
     }, 
     //[] // Empty dependancy array will allow useEffect to render only for the first render i.e. when the pade loads for first time
-    [name] // This will cause use effect to work only when state of 'name' changes and not at every render.
+    [name] // This will cause use effect to work only when state of 'name'   changes and not at every render.
     );
 
 
