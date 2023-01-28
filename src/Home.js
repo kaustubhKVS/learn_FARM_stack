@@ -11,10 +11,15 @@ const Home = () => {
          
     ]);
 
+    const handleDelete = (id) => {
+        const newBlog = blogs.filter(blog => blog.id !== id);
+        setBlogs(newBlog);
+    }
+    
     return ( 
 
         <div className="home">
-            <BlogList blogs={blogs} title="All Blogs are listed here."/>
+            <BlogList blogs={blogs} title="All Blogs are listed here." handleDelete={handleDelete} />
             <BlogList blogs={blogs.filter((blogs) => blogs.author === 'mario')} title="Mario's Blogs"></BlogList>
         </div>
 
@@ -23,6 +28,7 @@ const Home = () => {
 
 export default Home; 
 
+// handleDelete is defiend where the data resides, and we have passed handleDelete as a function to a prop
 // handleClickAgain('mario')
 // We do not INVOKE by function handleClick(), we invoke by reference handleClick
 // Use Camel casing e.g. you just used OnClick insted of onClick, O capital nahi tha

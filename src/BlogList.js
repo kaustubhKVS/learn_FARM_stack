@@ -1,4 +1,4 @@
-const Blogs = ({blogs , title}) => {
+const Blogs = ({blogs , title, handleDelete}) => {
     
     // Props is the data/properties passed between components.
     // you can import props like this, or use a deconstrunctor in the above function
@@ -14,6 +14,7 @@ const Blogs = ({blogs , title}) => {
                     <div className="blog-preview" key={blog.id}>
                         <h2>{ blog.title }</h2>
                         <p>Written by {blog.author}</p>
+                        <button onClick={() => handleDelete(blog.id)}>Delete Blog</button>
                     </div>
             ))}
         </div>
@@ -22,3 +23,5 @@ const Blogs = ({blogs , title}) => {
 }
 
 export default Blogs;
+
+// handleDelete is defiend where the data resides, and we have passed handle delete as a function to a prop
