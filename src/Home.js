@@ -1,33 +1,10 @@
 import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
+import useFetch from "./useFetch";
 
 const Home = () => {
 
-    const [blogs, setBlogs] = useState(null);
-    const [isPending, setPending] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        console.log('use effect ran');
-        fetch('http://localhost:8000/blogs')
-            .then(response => {
-                if(!response.ok)
-                {
-                    throw Error('COULD NOT FETCH DATA');
-                }
-                return response.json();
-            })
-            .then(data => {
-                setBlogs(data);
-                setPending(false);
-            })
-            .catch( err => {
-                setError(err.message);
-                setPending(false);
-            })
-    }, 
-    [] //dependancy array
-    );
+    const { data:blogs, isPending, error} = useFetch('http://localhost:8000/blogs');
 
     return ( 
 
@@ -42,6 +19,10 @@ const Home = () => {
 
 export default Home; 
 
+
+// We create custom hooks in order to seperate functionality from a component. e.g. fetching data etc. 
+// Unlike Arrays, using objects to pass data within components useful since we can access whatever we want with just a name. 
+// in a Deconstructor, we can rename the variable we deconstructed using a :name_the_variable thing.
 // Empty dependancy array will allow useEffect to render only for the first render i.e. when the pade loads for first time
 // [name] // This will cause use effect to work only when state of 'name'   changes and not at every render.
 // using && in javascript is like using AND operator, we can say X && Y, && will not check Y, then if X is true then Y will be executed, if X is False, Y will not be executed. 
