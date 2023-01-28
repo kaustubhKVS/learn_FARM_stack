@@ -1,6 +1,7 @@
 import Navbar from './Navbar';
 import Home from './Home';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import CreateBlog from './CreateBlog';
 function App() {
 
   return (
@@ -10,8 +11,11 @@ function App() {
           
           <div className="content">
             <Switch>
-              <Route path="/">
+              <Route exact path="/">
                 <Home></Home>
+              </Route>
+              <Route path="/create">
+                <CreateBlog></CreateBlog>
               </Route>
             </Switch>
           </div>
@@ -23,3 +27,7 @@ function App() {
 }
 
 export default App;
+
+// Read more about routing
+// Router will match character wise e.g. /create can be matched to /,/c,/cr etc etc
+// To not allow characterwise matching we will mention the exact route to critical paths. 
