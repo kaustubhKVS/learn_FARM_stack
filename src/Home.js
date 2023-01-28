@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import BlogList from "./BlogList";
 
 const Home = () => {
+    
     const [blogs, setBlogs] = useState(null);
-    
-    
+    const [isPending, setPending] = useState(true);
 
     useEffect(() => {
         console.log('use effect ran');
@@ -13,8 +13,9 @@ const Home = () => {
             return response.json();
         })
         .then(data => {
-            console.log(data);
+            // console.log(data);
             setBlogs(data);
+            setPending(false);
         })
     }, 
     [] //dependancy array
@@ -23,6 +24,7 @@ const Home = () => {
     return ( 
 
         <div className="home">
+            { isPending && <div> LOADING CONTENT </div>}
             {blogs && <BlogList blogs={blogs} title="All Blogs are listed here."/>}
         </div>
 
