@@ -7,8 +7,12 @@ const useFetch = (db_url) => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        console.log('useFetch custom hook ran');
-        fetch(db_url)
+
+        const abortCont = new AbortController();
+
+        setTimeout(() => {
+            
+        fetch(db_url, { signal: abortCont.signal })
             .then(response => {
                 if(!response.ok)
                 {
@@ -21,11 +25,21 @@ const useFetch = (db_url) => {
                 setPending(false);
             })
             .catch( err => {
-                setError(err.message);
-                setPending(false);
+                if(err.name === 'AbortError'){
+                    console.log('fetch aborted');
+                    }
+                else{
+                    setPending(false);
+                    setError(err.message);
+                    }
+                
             })
+        }, 1000);
+
+
+        return () => abortCont.abort();
     }, 
-    [] //dependancy array ONLY run at first render.
+    [db_url] //dependancy array
     );
     return { data, isPending, error} ;
 }
