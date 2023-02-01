@@ -1,23 +1,46 @@
 {
-    "blogs": [
-        {"title":"Tarun is a hoe", 
-        "body":"Tarun has 69 chicks in reserve",
-        "author":"JhonAKAJash", 
-        "id":1 },
-        
-        {"title":"Tarun is a hero",
-        "body":"Tarun saved me in reserve", 
-        "author":"SastiRandiSahil",
-        "id":2 },
-        
-        {"title":"New King of Amaravti",
-        "body":"Sindhi by Blood, Amaravti by heart",
-        "author":"TarunAKAlalla",
-        "id":3 },
-
-        {"title":"Tired",
-        "body":"Sindhi by Blood, Amaravti by heart",
-        "author":"mario",
-        "id":4 }
-    ]
+  "blogs": [
+    {
+      "title": "Tarun is a hoe",
+      "body": "Tarun has 69 chicks in reserve",
+      "author": "JhonAKAJash",
+      "id": 1
+    },
+    {
+      "title": "Tarun is a hero",
+      "body": "Tarun saved me in reserve",
+      "author": "SastiRandiSahil",
+      "id": 2
+    },
+    {
+      "title": "New King of Amaravti",
+      "body": "Sindhi by Blood, Amaravti by heart",
+      "author": "TarunAKAlalla",
+      "id": 3
+    },
+    {
+      "title": "Tired",
+      "body": "Sindhi by Blood, Amaravti by heart",
+      "author": "mario",
+      "id": 4
+    },
+    {
+      "title": "LOLO",
+      "body": "DODO",
+      "author": "yoshi",
+      "id": 5
+    },
+    {
+      "title": "asdasdasd",
+      "body": "asdasdasdasdasd",
+      "author": "mario",
+      "id": 6
+    },
+    {
+      "title": "asdasdasd",
+      "body": "asdasdasdasdasd",
+      "author": "mario",
+      "id": 7
+    }
+  ]
 }
