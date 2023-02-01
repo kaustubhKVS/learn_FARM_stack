@@ -18,7 +18,6 @@ const Home = () => {
 
 export default Home; 
 
-
 // We create custom hooks in order to seperate functionality from a component. e.g. fetching data etc. 
 // Unlike Arrays, using objects to pass data within components useful since we can access whatever we want with just a name. 
 // in a Deconstructor, we can rename the variable we deconstructed using a :name_the_variable thing.

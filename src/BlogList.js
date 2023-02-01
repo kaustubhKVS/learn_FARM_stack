@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Blogs = ({blogs , title}) => {
     
     // Props is the data/properties passed between components.
@@ -12,8 +14,11 @@ const Blogs = ({blogs , title}) => {
             <h2>{ title }</h2>
             {blogs.map((blog) => (
                     <div className="blog-preview" key={blog.id}>
+                        <Link to={`/blog_details/${blog.id}`}>
                         <h2>{ blog.title }</h2>
                         <p>Written by {blog.author}</p>
+                        </Link>
+                        
                         
                     </div>
             ))}
