@@ -1,10 +1,11 @@
 from fastapi import FastAPI, Path
+from typing import Optional
 
 app = FastAPI()
 
 inventory = {
     1: {
-        "name" : "KokoMonkey",
+        "name" : "dodo",
         "price" : 100,
         "Currency" : "BTC",
         "Author": "Luffy",
@@ -35,8 +36,11 @@ nft_dict = {
 }
 
 # Query Parameter
+# add None to def for having optional parameter
+# Add the strict qurey parameter first and later add optional parameters
+# Put * tp accept infinite arguments
 @app.get("/get-by-name")
-def get_item(name: str):
+def get_item(*, test:int, name: Optional[str] = None):
     for item_id in nft_dict:
         if inventory[item_id]["name"] == name:
             return inventory[item_id]
