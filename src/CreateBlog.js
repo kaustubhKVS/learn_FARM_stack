@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const CreateBlog = () => {
+    
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [author, setAuthor] = useState('mario');
 
     const [isPending, setIsPending] = useState(false);
+
+    const history = useHistory();
     
     const handleSubmit = (e) => {
         e.preventDefault(); 
@@ -21,12 +25,19 @@ const CreateBlog = () => {
             method:'POST',
             headers: { "Content-Type": "application/json"},
             body: JSON.stringify(new_blog)
-        }).then(() => {
-            console.log('New Blog Added');
+        }).then(response => {
+            
+            // console.log('New Blog Added');
+            // console.log(response);
+
             setIsPending(false);
+            // history.go(-1); to go to previous page in history
+            // history.go(+1); to go to the last to last page loaded
+            history.push('/');
+
         }
 
-        )}, 1000);
+        )}, 2000);
 
         }
     
