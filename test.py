@@ -1,4 +1,4 @@
-from fastapi import FastAPI, Path
+from fastapi import FastAPI, Path, Query
 from typing import Optional
 from pydantic import BaseModel
 
@@ -10,15 +10,7 @@ class Item(BaseModel):
 
 app = FastAPI()
 
-inventory = {
-    1: {
-        "name" : "dodo",
-        "price" : 100,
-        "Currency" : "BTC",
-        "Author": "Luffy",
-        "Producer" : "OnePiece",
-    }
-}
+inventory = {}
 
 @app.get("/")
 def home():
@@ -47,11 +39,11 @@ nft_dict = {
 # add None to def for having optional parameter
 # Add the strict qurey parameter first and later add optional parameters
 # Put * tp accept infinite arguments
-
-@app.get("/get-by-name/{item_id}")
-def get_item(*, item_id: int, test:int, name: Optional[str] = None):
+    
+@app.get("/get-by-name")
+def get_item(name: str = Query(None, title="Name", description='Name of the item')):
     for item_id in nft_dict:
-        if inventory[item_id]["name"] == name:
+        if inventory[item_id].name == name:
             return inventory[item_id]
         return{"Data":"Not Found"}
     
@@ -60,5 +52,5 @@ def create_item(item_id: int,item: Item):
     if item_id in inventory:
         return{"Error":"ItemID already exits"}
     
-    inventory[item_id] = {"name": item.name, "brand": item.brand, "price":item.price}
+    inventory[item_id] = item
     return inventory[item_id]
