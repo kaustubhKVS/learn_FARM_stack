@@ -3,3 +3,6 @@ Version control for keeping track of how Kaustubh is learning FARM stack being a
 
 # learn_FARM_stack integration
 Following the video tutorial: https://www.youtube.com/watch?v=OzUzrs8uJl8&t=10s
+
+# Start MongoDB Server
+sudo systemctl start mongod
