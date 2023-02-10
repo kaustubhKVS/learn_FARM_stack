@@ -10,13 +10,18 @@ sudo systemctl start mongod
 
 # ReactJS Frontend
 cd frontend
+
 npm install
+
 npm start
 
 # FastAPI Server
 cd backend
+
 conda create --name NAME_OF_ENVIRONTMENT --file requirements.txt
+
 conda activate NAME_OF_ENVIRONTMENT
+
 python --version
 
 Python version should be above 3.9+
